@@ -7,6 +7,9 @@ This repository tracks my SQL and data management progress by week.
 - `first_week/`
   - First week practice with SQL basics and a Python query example.
   - Includes its own `README.md` with details.
+- `second_week/`
+  - Week 2 learning focused on SQL sublanguages (DDL, DQL, DML, DTL, DCL).
+  - Includes its own `README.md` with examples.
 
 ## How I Use This Repo
 
