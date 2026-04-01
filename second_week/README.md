@@ -65,6 +65,35 @@ This week I learned the core SQL sublanguages and what each one is used for.
   - `DATETIME` for date and time
   - `FLOAT` for approximate decimal values with smaller storage
 
+## What I on 04_inserting_updating_default.sql
+
+- `INSERT INTO` → used to add new rows into a table
+- Can specify column names (best practice) or rely on table order
+
+- Learned that:
+  - Column order must match when omitting column names
+  - Multiple rows can be inserted in a single statement
+
+- `DEFAULT` → assigns a value automatically if none is provided
+  - Prevents missing data issues
+  - Example: Salary defaults to `0.00`
+
+- Understood behavior:
+  - With `DEFAULT` → value is auto-filled
+  - Without `DEFAULT` → becomes `NULL`
+  - With `NOT NULL` and no value → causes error
+
+- `UPDATE` → modifies existing records
+  - `SET` used to change column values
+
+- Learned critical rule:
+  - With `WHERE` → updates specific rows
+  - Without `WHERE` → updates ALL rows (dangerous)
+
+- Practiced:
+  - Updating multiple columns at once
+  - Verifying data before running updates
+
 ## Week 2 Goal
 
 Use each SQL sublanguage in small hands-on exercises so the differences between them are clear.

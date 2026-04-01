@@ -1,0 +1,69 @@
+-- =========================================
+-- SQL LEARNING: INSERT, DEFAULT, UPDATE
+-- =========================================
+
+
+-- 🔹 CREATE TABLE with DEFAULT values
+-- BirthDate will default to '2000-01-01' if not provided
+-- Salary will default to 0.00 if not provided
+
+CREATE TABLE Employee (
+    ID SMALLINT UNSIGNED,
+    Name VARCHAR(60),
+    BirthDate DATE DEFAULT '2000-01-01',
+    Salary DECIMAL(7,2) DEFAULT 0.00
+);
+
+
+-- =========================================
+-- 🔹 INSERT DATA
+-- =========================================
+
+-- Best practice: specify column names
+INSERT INTO Employee (ID, Name, Salary)
+VALUES (2538, 'Lisa Ellison', 45000);
+-- BirthDate will automatically be '2000-01-01'
+
+
+-- Insert without column names (must match table order exactly)
+INSERT INTO Employee
+VALUES (5384, 'Sam Snead', '2000-10-31', 30500);
+
+
+-- Insert multiple rows in one statement (efficient)
+INSERT INTO Employee
+VALUES 
+(6381, 'Maria Rodriguez', '2001-12-21', 92300),
+(7920, 'Jiho Chen', '1999-05-10', 56000),
+(9385, 'Alexis Parsons', '2002-08-15', 32000);
+
+
+-- Insert while omitting some columns
+INSERT INTO Employee (ID, Name)
+VALUES (1111, 'Default User');
+-- BirthDate → '2000-01-01'
+-- Salary → 0.00
+
+
+-- =========================================
+-- 🔹 UPDATE DATA
+-- =========================================
+
+-- SAFE: Update a specific row using WHERE
+UPDATE Employee
+SET Name = 'Tom Snead',
+    BirthDate = '2000-03-15'
+WHERE ID = 5384;
+
+
+-- ⚠️ DANGEROUS: Updates ALL rows (no WHERE clause)
+UPDATE Employee
+SET Salary = 42000;
+
+
+-- =========================================
+-- 🔹 VERIFICATION (BEST PRACTICE)
+-- =========================================
+
+-- Always check before/after updates
+SELECT * FROM Employee;
