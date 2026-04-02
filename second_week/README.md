@@ -65,7 +65,7 @@ This week I learned the core SQL sublanguages and what each one is used for.
   - `DATETIME` for date and time
   - `FLOAT` for approximate decimal values with smaller storage
 
-## What I on 04_inserting_updating_default.sql
+## What I on 04_inserting_updating_default_delete.sql
 
 - `INSERT INTO` → used to add new rows into a table
 - Can specify column names (best practice) or rely on table order
@@ -90,9 +90,69 @@ This week I learned the core SQL sublanguages and what each one is used for.
   - With `WHERE` → updates specific rows
   - Without `WHERE` → updates ALL rows (dangerous)
 
+- `DELETE FROM` → removes rows from a table
+
+- Learned that:
+  - `WHERE` determines which rows are deleted
+  - Without `WHERE` → ALL rows are deleted (very dangerous)
+
 - Practiced:
   - Updating multiple columns at once
-  - Verifying data before running updates
+  - Deleting single and multiple rows
+  - Verifying data before running updates or deletes
+
+## What I learned on 05_primarykey_foreignket.sql
+
+- `PRIMARY KEY` → uniquely identifies each row in a table
+- Cannot be `NULL` and cannot be duplicated
+
+- Learned that:
+  - Each row must have a unique identity
+  - Used for main identifiers like `ID`
+
+- `COMPOSITE KEY` → uses multiple columns to ensure uniqueness
+- Example: `(ID, Number)`
+
+- Learned that:
+  - One column alone may not be unique
+  - Combination of columns must be unique together
+  - `(ID, Relationship)` may fail if values repeat
+
+- `FOREIGN KEY` → links one table to another
+- Ensures data integrity between tables
+
+- Learned that:
+  - Value must exist in the referenced (parent) table
+  - Prevents invalid or orphan records
+  - Used to model relationships (1-to-many)
+
+- `PRIMARY KEY vs FOREIGN KEY`
+
+- Understood that:
+  - `PRIMARY KEY` → identifies the row
+  - `FOREIGN KEY` → connects rows between tables
+  - Both serve different purposes and are used together
+
+- `AUTO_INCREMENT` → automatically generates unique IDs
+
+- Learned that:
+  - Database assigns values (1, 2, 3...)
+  - No need to manually insert IDs
+  - Manual insertion is allowed but risky
+
+- `INSERT rules` → column and value matching
+
+- Learned that:
+  - Column count must match value count
+  - Order matters when columns are not specified
+  - Best practice: always specify column names
+
+- `UNSIGNED` → prevents negative values
+
+- Learned that:
+  - Only allows positive numbers (0 and above)
+  - Useful for IDs, counts, and quantities
+  - Increases positive value range
 
 ## Week 2 Goal
 

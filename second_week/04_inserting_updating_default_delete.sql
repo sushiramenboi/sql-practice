@@ -62,6 +62,22 @@ SET Salary = 42000;
 
 
 -- =========================================
+-- 🔹 DELETE
+-- =========================================
+
+-- Delete specific row
+DELETE FROM Employee
+WHERE ID = 6381;
+
+-- Delete multiple rows
+DELETE FROM Employee
+WHERE Salary > 40000 AND Salary < 80000;
+
+-- ⚠️ Deletes ALL rows
+DELETE FROM Employee;
+
+
+-- =========================================
 -- 🔹 VERIFICATION (BEST PRACTICE)
 -- =========================================
 
