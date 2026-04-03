@@ -1,44 +1,107 @@
--- Create Employee table (Parent)
-CREATE TABLE Employee (
-    ID SMALLINT UNSIGNED AUTO_INCREMENT,   -- Unique ID (auto-generated, no negatives)
-    Name VARCHAR(60) NOT NULL,             -- Employee name (required)
-    Salary DECIMAL(7,2),                   -- Salary with decimals
-    PRIMARY KEY (ID)                       -- Ensures each ID is unique
+-- =========================================
+-- 1) PRIMARY KEY (single-column uniqueness)
+-- Use PRIMARY KEY when one column must uniquely identify each row
+-- and cannot be NULL.
+-- =========================================
+DROP TABLE IF EXISTS Student;
+
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(60) NOT NULL
 );
 
--- Create Family table (Child)
-CREATE TABLE Family (
-    ID SMALLINT UNSIGNED,                  -- Refers to Employee ID
-    Number SMALLINT UNSIGNED,              -- Family member number (1, 2, 3...)
-    Relationship VARCHAR(20),              -- Spouse, Son, Daughter, etc.
-    Name VARCHAR(60),                      -- Family member name
 
-    PRIMARY KEY (ID, Number),              -- Composite key (unique together)
-    FOREIGN KEY (ID) REFERENCES Employee(ID) -- Links to Employee table
+-- =========================================
+-- 2) COMPOSITE KEY (multi-column uniqueness)
+-- Use a composite key when one column alone is not unique,
+-- but the combination of two or more columns is unique.
+-- =========================================
+DROP TABLE IF EXISTS Enrollment;
+
+CREATE TABLE Enrollment (
+    StudentID INT,
+    CourseID INT,
+    EnrolledOn DATE,
+    PRIMARY KEY (StudentID, CourseID)
 );
 
--- Insert into Employee (AUTO_INCREMENT handles ID)
-INSERT INTO Employee (Name, Salary)
-VALUES ('Maria Rodriguez', 92300);
 
--- Insert into Family (must match existing Employee ID)
-INSERT INTO Family (ID, Number, Relationship, Name)
-VALUES (1, 1, 'Spouse', 'Jose Rodriguez');
+-- =========================================
+-- 3) FOREIGN KEY (table relationship)
+-- Use FOREIGN KEY to link rows in a child table to valid rows
+-- in a parent table, preserving referential integrity.
+-- =========================================
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS Customers;
 
--- Example JOIN (combine both tables)
-SELECT 
-    e.Name AS EmployeeName,
-    f.Relationship,
-    f.Name AS FamilyMember
-FROM Employee e
-JOIN Family f ON e.ID = f.ID;
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    Name VARCHAR(60) NOT NULL
+);
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
 
 
-## Notes
+-- =========================================
+-- 4) AUTO_INCREMENT (automatic ID generation)
+-- Use AUTO_INCREMENT to let MySQL assign the next numeric ID
+-- automatically when inserting new rows.
+-- =========================================
+DROP TABLE IF EXISTS Ticket;
 
--- PRIMARY KEY → uniqueness
--- COMPOSITE KEY → uniqueness using multiple columns
--- FOREIGN KEY → relationship between tables
--- AUTO_INCREMENT → automatic ID generation
--- INSERT → must match column count or specify columns
--- UNSIGNED → prevents negative values
+CREATE TABLE Ticket (
+    TicketID INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(100) NOT NULL
+);
+
+INSERT INTO Ticket (Title)
+VALUES ('Printer issue'), ('Login issue');
+
+
+-- =========================================
+-- 5) INSERT (column/value matching rules)
+-- If you do not list column names, values must match the full table order.
+-- Best practice: list columns explicitly to avoid mistakes.
+-- =========================================
+DROP TABLE IF EXISTS EmployeeInsertDemo;
+
+CREATE TABLE EmployeeInsertDemo (
+    ID INT,
+    Name VARCHAR(60),
+    Salary DECIMAL(8,2)
+);
+
+-- Preferred: specify columns
+INSERT INTO EmployeeInsertDemo (ID, Name, Salary)
+VALUES (1, 'Ana', 65000.00);
+
+-- Also valid: include all columns in table order
+INSERT INTO EmployeeInsertDemo
+VALUES (2, 'Ben', 58000.00);
+
+-- Invalid example (column count mismatch):
+-- INSERT INTO EmployeeInsertDemo VALUES (3, 'Chris');
+
+
+-- =========================================
+-- 6) UNSIGNED (no negative numbers)
+-- Use UNSIGNED for numeric fields that should never be negative
+-- (for example: quantity, age, or stock count).
+-- =========================================
+DROP TABLE IF EXISTS Inventory;
+
+CREATE TABLE Inventory (
+    ProductID INT PRIMARY KEY,
+    Quantity INT UNSIGNED
+);
+
+INSERT INTO Inventory (ProductID, Quantity)
+VALUES (101, 25);
+
+-- Invalid example (negative value):
+-- INSERT INTO Inventory (ProductID, Quantity) VALUES (102, -5);
