@@ -154,6 +154,95 @@ This week I learned the core SQL sublanguages and what each one is used for.
   - Useful for IDs, counts, and quantities
   - Increases positive value range
 
+## What I learned on 06_referential_integrity.sql
+
+- `REFERENTIAL INTEGRITY` → ensures relationships between tables stay valid
+- Prevents foreign keys from referencing non-existent rows
+
+- Learned that:
+  - Child table depends on parent table
+  - Foreign key must match a primary key in the parent table
+  - Prevents invalid or orphan records
+
+---
+
+- `FOREIGN KEY ACTIONS` → rules that control what happens when parent data changes
+
+- Learned that:
+  - Triggered on `DELETE` or `UPDATE`
+  - Automatically handle dependent rows
+  - Used to enforce database behavior based on business logic
+
+---
+
+- `RESTRICT` → blocks the action
+
+- Learned that:
+  - Cannot delete/update parent if child rows still reference it
+  - Forces manual cleanup first
+  - Safest option to prevent accidental data loss
+
+---
+
+- `CASCADE` → propagates the same action
+
+- Learned that:
+  - Does NOT copy or duplicate data
+  - Applies the same action to child rows
+  - `DELETE` → removes related child rows
+  - `UPDATE` → updates foreign key values
+  - Can be powerful but risky if misused
+
+---
+
+- `SET NULL` → removes the relationship
+
+- Learned that:
+  - Child row stays
+  - Foreign key becomes `NULL`
+  - Column must allow NULL
+  - Used when relationship is optional
+
+---
+
+- `SET DEFAULT` → assigns a fallback value
+
+- Learned that:
+  - Foreign key becomes default value
+  - Keeps row but replaces the reference
+  - Depends on database support
+
+---
+
+- `ON DELETE vs ON UPDATE`
+
+- Learned that:
+  - `ON DELETE` → runs when parent row is deleted
+  - `ON UPDATE` → runs when parent key changes
+  - Both maintain consistency between tables
+
+---
+
+- `REFERENTIAL INTEGRITY IN PRACTICE`
+
+- Learned that:
+  - Keeps data consistent automatically
+  - Prevents broken relationships
+  - Choice depends on business rules:
+    - Critical data → `RESTRICT`
+    - Dependent data → `CASCADE`
+    - Optional relationships → `SET NULL`
+
+---
+
+- `MENTAL MODEL`
+
+- Understood that:
+  - `RESTRICT` → block the action
+  - `CASCADE` → pass the action down
+  - `SET NULL` → remove the link
+  - `SET DEFAULT` → replace the link
+
 ## Week 2 Goal
 
 Use each SQL sublanguage in small hands-on exercises so the differences between them are clear.
