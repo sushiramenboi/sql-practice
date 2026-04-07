@@ -4,12 +4,50 @@ This repository tracks my SQL and data management progress by week.
 
 ## Structure
 
-- `first_week/`
-  - First week practice with SQL basics and a Python query example.
-  - Includes its own `README.md` with details.
-- `second_week/`
-  - Week 2 learning focused on SQL sublanguages (DDL, DQL, DML, DTL, DCL).
-  - Includes its own `README.md` with examples.
+- `01_introduction/`
+  - Beginner SQL and Python database practice.
+  - Includes its own `README.md`.
+- `02_database_management/`
+  - SQL database management concepts and practice files.
+  - Includes its own `README.md`.
+- `03_complex_queries/`
+  - Reserved for upcoming advanced query practice.
+
+## What I Learned So Far
+
+### 01_introduction
+
+- `sql/01_bankusers_table.sql`
+  - Created a basic table and practiced core data types (`INT`, `VARCHAR`, `DATE`, `DECIMAL`).
+
+- `sql/02_sakila_basics.sql`
+  - Practiced database navigation (`SHOW DATABASES`, `USE`, `SHOW TABLES`) and data reading with `SELECT`.
+
+- `python/01_book_query_example.py`
+  - Practiced running a SQL query from Python and printing results.
+
+### 02_database_management
+
+- `01_core_concepts.sql`
+  - Learned core SQL terms and command types, plus basics of `SELECT`, `INSERT`, quoting, and schemas.
+
+- `02_sublanguages.sql`
+  - Practiced all five SQL sublanguages: `DDL`, `DQL`, `DML`, `DTL`, and `DCL`.
+
+- `03_datatypes.sql`
+  - Practiced safe table setup and choosing practical data types, including `UNSIGNED` usage.
+
+- `04_inserting_updating_default_delete.sql`
+  - Practiced `INSERT`, `DEFAULT`, `UPDATE`, and `DELETE`, with emphasis on safe use of `WHERE`.
+
+- `05_primarykey_foreignkey.sql`
+  - Practiced `PRIMARY KEY`, composite key, `FOREIGN KEY`, `AUTO_INCREMENT`, and insert/value matching rules.
+
+- `06_referential_integrity.sql`
+  - Practiced parent-child integrity and referential actions (`RESTRICT`, `CASCADE`, `SET NULL`, `SET DEFAULT`).
+
+- `07_constraints.sql`
+  - Practiced creating and managing constraints (`UNIQUE`, `CHECK`, `NOT NULL`) and MySQL-specific drop rules.
 
 ## How I Use This Repo
 

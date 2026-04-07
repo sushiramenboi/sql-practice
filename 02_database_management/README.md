@@ -243,6 +243,138 @@ This week I learned the core SQL sublanguages and what each one is used for.
   - `SET NULL` → remove the link
   - `SET DEFAULT` → replace the link
 
+## What I learned on 07_constraints.sql
+
+- `CONSTRAINTS` → rules that control what data is allowed in a table
+- Prevent invalid, duplicate, or inconsistent data from being stored
+
+- Learned that:
+  - Constraints enforce data integrity automatically
+  - Data must satisfy constraints or it gets rejected
+  - Constraints act like a validation layer before insertion
+
+---
+
+- `PRIMARY KEY` → unique identifier for each row
+
+- Learned that:
+  - Cannot contain duplicate values
+  - Cannot contain NULL values
+  - Each table should have one primary key
+  - Used to uniquely identify records
+
+---
+
+- `NOT NULL` → ensures a column must have a value
+
+- Learned that:
+  - Prevents empty (NULL) values
+  - Acts as a required field
+  - Must be added by modifying the column (CHANGE in MySQL)
+
+---
+
+- `UNIQUE` → ensures no duplicate values (or combinations)
+
+- Learned that:
+  - Can be applied to a single column or multiple columns
+  - Composite UNIQUE ensures combinations are unique
+  - Does NOT prevent NULL values (unless specified)
+  - In MySQL, UNIQUE is implemented as an INDEX
+
+---
+
+- `CHECK` → enforces a condition on values
+
+- Learned that:
+  - Data must satisfy a logical condition (e.g. Age > 18)
+  - Can be named using CONSTRAINT
+  - Rejects invalid data before insertion
+  - NULL values may still pass (treated as UNKNOWN)
+
+---
+
+- `IN` (used in CHECK) → limits values to a specific list
+
+- Learned that:
+  - Works like multiple OR conditions
+  - Used to restrict allowed values (e.g. 'small', 'medium', 'large')
+  - Helps simulate controlled inputs (like dropdowns)
+
+---
+
+- `CONSTRAINT NAMING` → giving a custom name to a rule
+
+- Learned that:
+  - Helps identify and manage constraints later
+  - Required when dropping or modifying constraints
+  - Syntax: CONSTRAINT name TYPE (...)
+
+---
+
+- `ALTER TABLE` → modifies an existing table
+
+- Learned that:
+  - Used to add or remove constraints
+  - Used to modify column definitions
+  - Does NOT create or delete tables
+
+---
+
+- `ADDING CONSTRAINTS`
+
+- Learned that:
+  - Named constraints use ADD CONSTRAINT
+  - Example: ADD CONSTRAINT name CHECK (...)
+  - Fails if existing data violates the constraint
+
+---
+
+- `DROPPING CONSTRAINTS`
+
+- Learned that:
+  - Different syntax depending on constraint type (MySQL-specific)
+  - PRIMARY KEY → DROP PRIMARY KEY
+  - FOREIGN KEY → DROP FOREIGN KEY name
+  - UNIQUE → DROP INDEX name
+  - CHECK → DROP CHECK name
+
+---
+
+- `COLUMN CONSTRAINTS VS NAMED CONSTRAINTS`
+
+- Learned that:
+  - NOT NULL and DEFAULT are part of the column
+  - Must use CHANGE to modify them
+  - Other constraints (CHECK, UNIQUE, FK) are separate objects
+
+---
+
+- `CHANGE (COLUMN MODIFICATION)`
+
+- Learned that:
+  - Used to redefine a column
+  - Required for adding/removing NOT NULL
+  - Syntax: CHANGE oldName newName newDefinition
+
+---
+
+- `INFORMATION_SCHEMA` → database metadata system
+
+- Learned that:
+  - Stores information about tables and constraints
+  - Used to inspect constraint names
+  - Helps when modifying or debugging constraints
+
+---
+
+- `CONSTRAINT PURPOSE`
+
+- Learned that:
+  - Ensures data consistency and reliability
+  - Prevents bad or invalid data from entering the system
+  - Acts as a safeguard for database integrity
+
 ## Week 2 Goal
 
 Use each SQL sublanguage in small hands-on exercises so the differences between them are clear.
