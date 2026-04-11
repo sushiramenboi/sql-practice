@@ -138,3 +138,24 @@ SELECT * FROM Horse;
 
 
 
+
+
+-- =========================================
+-- LAB SNIPPET: CREATE HORSE TABLE WITH CONSTRAINTS
+-- Source topic: CREATE TABLE + CHECK/NOT NULL/PK
+-- =========================================
+
+-- Create Horse table with datatype and rule constraints
+CREATE TABLE Horse (
+    ID SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    RegisteredName VARCHAR(15) NOT NULL,
+    Breed VARCHAR(20) CHECK (Breed IN ('Egyptian Arab', 'Holsteiner', 'Quarter Horse', 'Paint', 'Saddlebred')),
+    Height DECIMAL(3,1) CHECK (Height BETWEEN 10.0 AND 20.0),
+    BirthDate DATE CHECK (BirthDate >= '2015-01-01')
+);
+
+-- FLOAT = fast, approximate ❌ 
+-- DECIMAL = exact, controlled ✅ 
+
+-- Confirm table columns and metadata
+SHOW COLUMNS FROM Horse;
