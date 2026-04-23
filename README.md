@@ -1,64 +1,41 @@
 # SQL and Data Management Learning Journey
 
-This repository tracks my SQL and data management progress by week.
+This repository is my personal SQL exploration through a textbook-style tutorial.
+I am learning chapter by chapter, writing examples, and documenting what I understand in my own words.
 
-## Structure
+## Learning Map
 
 - `01_introduction/`
-  - Beginner SQL and Python database practice.
-  - Includes its own `README.md`.
+  - First steps with SQL basics and a simple Python query example.
+
 - `02_database_management/`
-  - SQL database management concepts and practice files.
-  - Includes its own `README.md`.
+  - Core SQL operations: data types, DDL/DML/DQL, keys, constraints, and referential integrity.
+
 - `03_complex_queries/`
-  - Reserved for upcoming advanced query practice.
+  - Intermediate query work: filtering logic, NULL rules, operators, functions, aggregates, joins, and views.
 
-## What I Learned So Far
+- `04_Database_Design/`
+  - Database design concepts from the textbook: ER modeling, cardinality, strong/weak entities, subtype/supertype, and normalization.
 
-### 01_introduction
+- `05_Indexes/`
+  - Notes and practice on table structures and indexing fundamentals.
 
-- `sql/01_bankusers_table.sql`
-  - Created a basic table and practiced core data types (`INT`, `VARCHAR`, `DATE`, `DECIMAL`).
+## What This Repo Is
 
-- `sql/02_sakila_basics.sql`
-  - Practiced database navigation (`SHOW DATABASES`, `USE`, `SHOW TABLES`) and data reading with `SELECT`.
-
-- `python/01_book_query_example.py`
-  - Practiced running a SQL query from Python and printing results.
-
-### 02_database_management
-
-- `01_core_concepts.sql`
-  - Learned core SQL terms and command types, plus basics of `SELECT`, `INSERT`, quoting, and schemas.
-
-- `02_sublanguages.sql`
-  - Practiced all five SQL sublanguages: `DDL`, `DQL`, `DML`, `DTL`, and `DCL`.
-
-- `03_datatypes.sql`
-  - Practiced safe table setup and choosing practical data types, including `UNSIGNED` usage.
-
-- `04_inserting_updating_default_delete.sql`
-  - Practiced `INSERT`, `DEFAULT`, `UPDATE`, and `DELETE`, with emphasis on safe use of `WHERE`.
-
-- `05_primarykey_foreignkey.sql`
-  - Practiced `PRIMARY KEY`, composite key, `FOREIGN KEY`, `AUTO_INCREMENT`, and insert/value matching rules.
-
-- `06_referential_integrity.sql`
-  - Practiced parent-child integrity and referential actions (`RESTRICT`, `CASCADE`, `SET NULL`, `SET DEFAULT`).
-
-- `07_constraints.sql`
-  - Practiced creating and managing constraints (`UNIQUE`, `CHECK`, `NOT NULL`) and MySQL-specific drop rules.
+- A textbook tutorial notebook in repository form
+- My hands-on SQL practice space
+- A running log of what I learned as I move through each module
 
 ## How I Use This Repo
 
-- Each week gets its own folder
-- Each week folder includes a dedicated `README.md`
-- Practice files are grouped by topic/language for easier review
+- I follow topics in order, like textbook chapters
+- Each major topic/module gets its own folder
+- I keep both practice SQL files and concept notes
+- I rewrite ideas in plain language so I can actually retain them
 
-## Transactions, Rollback, and Commit
+## Safety Habit While Practicing SQL
 
-- For risky SQL changes, use transactions so changes can be undone.
-- `ROLLBACK` undoes changes inside an open transaction.
-- `COMMIT` saves changes permanently.
-- Without a transaction, many changes cannot be undone.
-- Always test the target rows with `SELECT` first before running `UPDATE`, `DELETE`, or `DROP`.
+- I test rows with `SELECT` first before running `UPDATE`, `DELETE`, or `DROP`
+- For risky changes, I use transactions
+- `ROLLBACK` undoes changes in an open transaction
+- `COMMIT` saves changes permanently
